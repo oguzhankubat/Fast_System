@@ -1,0 +1,13 @@
+package Finance.Fast_System.business.abstracts;
+
+import Finance.Fast_System.business.requests.CreateCivilAccountRequests;
+import Finance.Fast_System.business.requests.EnableAndDisableCivilAccountRequests;
+import Finance.Fast_System.business.responses.AfterCreateCivilAccountResponses;
+
+public interface CivilAccountService {
+	AfterCreateCivilAccountResponses createCivilAccount(CreateCivilAccountRequests	createCivilAccountRequests);
+	
+	String disableCivilAccount(EnableAndDisableCivilAccountRequests enableAndDisableCivilAccountRequests);
+	
+	String enableCivilAccount(EnableAndDisableCivilAccountRequests enableAndDisableCivilAccountRequests);
+}

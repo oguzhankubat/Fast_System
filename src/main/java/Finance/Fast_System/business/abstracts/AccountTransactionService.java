@@ -1,0 +1,13 @@
+package Finance.Fast_System.business.abstracts;
+
+import Finance.Fast_System.business.requests.AccountTransactionToFastSystemRequests;
+import Finance.Fast_System.business.responses.AfterAccountTransactionToOwnerAccountResponses;
+
+public interface AccountTransactionService {
+	
+	AfterAccountTransactionToOwnerAccountResponses createTransactionToFastSystem(AccountTransactionToFastSystemRequests accountTransactionToFastSystemRequests);
+	
+	//void redirectToBankSystem(AccountTransactionToBankSystemRequests accountTransactionToBankRequests);
+	
+
+}
