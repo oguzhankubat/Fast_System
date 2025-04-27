@@ -54,6 +54,9 @@ public class CivilAccount {
     @Column(name = "holderbank_vkn_number", nullable = false,length = 10)
     private String holderbankVknNumber;
     
+    @Column(name="holder_account_vkn",nullable = true,length = 10)
+    private String holderAccountVkn;
+    
     @Column(name = "bank_code")
     private String bankCode;
     

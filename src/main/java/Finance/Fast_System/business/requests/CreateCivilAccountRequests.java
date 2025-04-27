@@ -51,4 +51,9 @@ public class CreateCivilAccountRequests {
 	@Size(min = 7,max = 7)
 	private String accountNumber;
 	
+	@NotNull
+	@NotBlank
+	@Size(min = 10,max = 10)
+	private String holderAccountVkn;
+	
 }
