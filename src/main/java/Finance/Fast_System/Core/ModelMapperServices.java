@@ -14,7 +14,7 @@ public class ModelMapperServices {
 	public ModelMapper forResponse() {
 		this.modelMapper.getConfiguration()
 		.setAmbiguityIgnored(true)
-		.setMatchingStrategy(MatchingStrategies.LOOSE);//alan adları birebir olmasa da //gene kullanılabilir.
+		.setMatchingStrategy(MatchingStrategies.LOOSE);
 		
 
 		return this.modelMapper;
@@ -24,7 +24,7 @@ public class ModelMapperServices {
 	public ModelMapper forRequest() {
 		this.modelMapper.getConfiguration()
 		.setAmbiguityIgnored(true)
-		.setMatchingStrategy(MatchingStrategies.STANDARD);//alan adları birebir aynı
+		.setMatchingStrategy(MatchingStrategies.STANDARD);
 		
 		return this.modelMapper;
 	}

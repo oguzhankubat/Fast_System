@@ -30,7 +30,7 @@ public class CivilAccount {
     @Column(name = "id")
     private int id;
     
-    @Column(name = "account_IBAN")
+    @Column(name = "account_IBAN",unique = true)
     private String accountIBAN;
     
     @Column(name = "account_type", nullable = false,length = 10)
@@ -47,18 +47,10 @@ public class CivilAccount {
 
     @Column(name = "account_status", nullable = false)
     private String accountStatus;
-
-    @Column(name = "account_holder_bank", nullable = false,length = 15)
-    private String accountHolderBank;
-
-    @Column(name = "holderbank_vkn_number", nullable = false,length = 10)
-    private String holderbankVknNumber;
     
-    @Column(name="holder_account_vkn",nullable = true,length = 10)
-    private String holderAccountVkn;
+    @Column(name="holder_account_vkn_or_tc",nullable = true,length = 11)
+    private String AccountVknOrTc;
     
-    @Column(name = "bank_code")
-    private String bankCode;
     
     @Column(name = "branch_code")
     private String branchCode;
@@ -69,6 +61,10 @@ public class CivilAccount {
     @ManyToOne
     @JoinColumn(name = "civil_account_tc_kimlik_number", referencedColumnName = "tc_kimlik_number", updatable = false)
     private Civil civil;
+    
+    @ManyToOne
+    @JoinColumn(name="account_owner_bank_vkn_number",referencedColumnName = "holderbank_vkn_number")
+    private AccountOwnerBank accountOwnerBank;  
 
     @OneToMany(mappedBy = "civilAccount")
     private List<AccountTransaction> accountTransactions;
