@@ -19,29 +19,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "account_owner_bank", indexes = {
+@Table(name = "bank_ownership", indexes = {
         @Index(name = "idx_holderbank_vkn_number", columnList = "holderbank_vkn_number")
 })
-public class AccountOwnerBank {
+public class BankOwnership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
-    @Column(name = "created_time")
-    private LocalDateTime createdTime;
 
     @Column(name = "account_holder_bank", nullable = false,length = 15,unique = true)
-    private String accountHolderBank;
+    private String accountOwnershipBank;
 
     @Column(name = "holderbank_vkn_number", nullable = false,length = 10,unique = true)
-    private String holderbankVknNumber;
+    private String ownershipbankVknNumber;
     
     @Column(name = "bank_code",unique = true,nullable = false)
     private String bankCode;
     
     @Column(name = "bank_code_token",unique = true,nullable = false)
     private String bankCodeToken;
+    
+    @Column(name = "created_time")
+    private LocalDateTime createdTime;
     
     @OneToMany(mappedBy = "accountOwnerBank")
     private List<CivilAccount> civilAccounts;

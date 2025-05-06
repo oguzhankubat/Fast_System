@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import Finance.Fast_System.CentralBankConstants.CentralBankConstant;
 import Finance.Fast_System.Core.ModelMapperServices;
 import Finance.Fast_System.Exceptions.TcException;
 import Finance.Fast_System.business.requests.CreateCivilAccountRequests;
@@ -39,7 +40,7 @@ public class CheckTcKimlikNumberRule {
                     .port(8086)
                     .path("/api/person/check")
                     .queryParam("tcKimlikNumber", createCivilAccountRequests.getTcKimlikNumber())
-                    .queryParam("corporationVkn", createCivilAccountRequests.getHolderbankVknNumber());
+                    .queryParam("corporationVkn", CentralBankConstant.BANK_VKN);
 
             CivilSystemAPIResponse apiResponse = null;
             

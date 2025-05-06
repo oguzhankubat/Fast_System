@@ -30,7 +30,7 @@ public class TransactionDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "transaction_number", length = 30)
+    @Column(name = "transaction_number", length = 30,unique = true)
     private String transactionNumber;
 
     @Column(name = "transaction_time")

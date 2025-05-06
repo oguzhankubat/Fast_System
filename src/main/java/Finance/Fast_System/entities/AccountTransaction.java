@@ -30,7 +30,7 @@ public class AccountTransaction {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "transaction_detail_id", nullable = false)
+    @JoinColumn(name = "transaction_detail_transaction_number",referencedColumnName = "transaction_number", nullable = false)
     private TransactionDetail transactionDetail;
 
     @ManyToOne

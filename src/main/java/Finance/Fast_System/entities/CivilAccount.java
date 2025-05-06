@@ -48,14 +48,11 @@ public class CivilAccount {
     @Column(name = "account_status", nullable = false)
     private String accountStatus;
     
-    @Column(name="holder_account_vkn_or_tc",nullable = true,length = 11)
-    private String AccountVknOrTc;
     
-    
-    @Column(name = "branch_code")
+    @Column(name = "branch_code",length = 5)
     private String branchCode;
     
-    @Column(name="account_number")
+    @Column(name="account_number",length = 7)
     private String accountNumber;
     
     @ManyToOne
@@ -64,7 +61,7 @@ public class CivilAccount {
     
     @ManyToOne
     @JoinColumn(name="account_owner_bank_vkn_number",referencedColumnName = "holderbank_vkn_number")
-    private AccountOwnerBank accountOwnerBank;  
+    private BankOwnership accountOwnerBank;  
 
     @OneToMany(mappedBy = "civilAccount")
     private List<AccountTransaction> accountTransactions;

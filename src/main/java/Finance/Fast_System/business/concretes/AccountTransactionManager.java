@@ -1,7 +1,5 @@
 package Finance.Fast_System.business.concretes;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Service;
 
 import Finance.Fast_System.Core.ModelMapperServices;
@@ -44,33 +42,12 @@ public class AccountTransactionManager implements AccountTransactionService{
 	    
 	    AccountTransaction ownerTransaction=modelMapperServices.forRequest()
 	    		.map(request, AccountTransaction.class);
-	    
-	    ownerTransaction.setTransactionNumber(transactionNumber);
-	    ownerTransaction.setTransactionTime(LocalDateTime.now());
-	    ownerTransaction.setTransactionAmount(-transactionAmount); 
-	    ownerTransaction.setCivilAccount(ownerAccount); 
-
-	    
-	    AccountTransaction receiptTransaction=modelMapperServices.forRequest()
-	    		.map(request, AccountTransaction.class);
-	    
-	    receiptTransaction.setTransactionNumber(transactionNumber);
-	    receiptTransaction.setTransactionTime(LocalDateTime.now());
-	    receiptTransaction.setTransactionAmount(transactionAmount); 
-	    receiptTransaction.setCivilAccount(receiptAccount); 
-	    
-	    //bu araya alıcı bankaya post işlemi eklenecek. başarısız durum olursa veritabanına
-	    //kayıt edilmeden @transactional ile işlemler geri sarılacak.
-	    
-	    accountTransactionRepository.save(ownerTransaction);
-	    accountTransactionRepository.save(receiptTransaction);
 
 
 	    AfterAccountTransactionToOwnerAccountResponses response = new AfterAccountTransactionToOwnerAccountResponses();
 	    response.setTransactionNumber(transactionNumber); 
 	    response.setReceiptPersonName(receiptAccount.getCivil().getPersonName());
 	    response.setReceiptPersonLastName(receiptAccount.getCivil().getPersonLastName());
-	    response.setReceiptBankName(receiptAccount.getAccountHolderBank());
 
 	    return response;
 	}

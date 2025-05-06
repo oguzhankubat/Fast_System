@@ -47,12 +47,12 @@ public class CivilAccountManager implements CivilAccountService{
         	
         
         String token = tokenGenerator.generateToken();
-        String iban = ibanGenerator.generateIban(
+        /*String iban = ibanGenerator.generateIban(
                 createCivilAccountRequests.getBankCode(),
                 createCivilAccountRequests.getBranchCode(),
-                createCivilAccountRequests.getAccountNumber());
+                createCivilAccountRequests.getAccountNumber());*/
         
-        civilAccount.setAccountIBAN(iban);
+        //civilAccount.setAccountIBAN(iban);
         civilAccount.setAccountToken(token);
         civilAccount.setAccountStatus("Active");
         civilAccount.setCivil(civil);
@@ -65,7 +65,7 @@ public class CivilAccountManager implements CivilAccountService{
 		
 		AfterCreateCivilAccountResponses afterCreateCivilAccountResponses = new AfterCreateCivilAccountResponses();
 		afterCreateCivilAccountResponses.setAccountToken(token);
-		afterCreateCivilAccountResponses.setAccountIBAN(iban);
+		//afterCreateCivilAccountResponses.setAccountIBAN(iban);
 		
 		return afterCreateCivilAccountResponses;
 		

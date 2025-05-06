@@ -16,15 +16,7 @@ public class CreateCivilAccountRequests {
 	@NotBlank
 	@Size(min = 11,max = 11)
 	private String tcKimlikNumber;
-	
-	@NotNull
-	@NotBlank
-	@Size(min = 10,max = 10)
-	private String holderbankVknNumber;
-	
-	@NotNull
-	@NotBlank
-	private String accountHolderBank;
+
 	
 	@NotNull
 	@NotBlank
@@ -38,11 +30,6 @@ public class CreateCivilAccountRequests {
 	
 	@NotNull
 	@NotBlank
-	@Size(min=5,max = 5)
-	private String bankCode;
-	
-	@NotNull
-	@NotBlank
 	@Size(min=4,max = 4)
 	private String branchCode;
 	
@@ -53,7 +40,7 @@ public class CreateCivilAccountRequests {
 	
 	@NotNull
 	@NotBlank
-	@Size(min = 10,max = 10)
-	private String holderAccountVkn;
+	@Size(min=36,max = 36)
+	private String bankOwnershipToken;
 	
 }
