@@ -1,12 +1,11 @@
 package Finance.Fast_System.business.concretes;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import Finance.Fast_System.Core.ModelMapperServices;
+import Finance.Fast_System.Rules.CheckBankOwnership;
 import Finance.Fast_System.Rules.CheckCurrency;
 import Finance.Fast_System.Rules.CheckDisableAndEnableAccountRules;
 import Finance.Fast_System.Rules.CheckTcKimlikNumberRule;
@@ -17,7 +16,7 @@ import Finance.Fast_System.business.requests.CreateCivilAccountRequests;
 import Finance.Fast_System.business.requests.EnableAndDisableCivilAccountRequests;
 import Finance.Fast_System.business.responses.AfterCreateCivilAccountResponses;
 import Finance.Fast_System.dataRepository.CivilAccountRepository;
-import Finance.Fast_System.entities.AccountTransaction;
+import Finance.Fast_System.entities.BankOwnership;
 import Finance.Fast_System.entities.Civil;
 import Finance.Fast_System.entities.CivilAccount;
 import lombok.AllArgsConstructor;
@@ -33,7 +32,7 @@ public class CivilAccountManager implements CivilAccountService{
 	private final CheckTcKimlikNumberRule checkTcKimlikNumberRule;
 	private final CheckDisableAndEnableAccountRules checkDisableAndEnableAccountRules;
 	private final CheckCurrency checkCurrency;
-	
+	private final CheckBankOwnership checkBankOwnership;
 	
 	@Override
 	public AfterCreateCivilAccountResponses createCivilAccount(
@@ -42,30 +41,32 @@ public class CivilAccountManager implements CivilAccountService{
 		
 		checkCurrency.validate(createCivilAccountRequests.getAccountCurrency());  
         
+		BankOwnership bank=checkBankOwnership.checkBankOwnership(createCivilAccountRequests);
+		
+		
         CivilAccount civilAccount=modelMapperServices.forRequest()
         		.map(createCivilAccountRequests, CivilAccount.class);
         	
         
         String token = tokenGenerator.generateToken();
-        /*String iban = ibanGenerator.generateIban(
-                createCivilAccountRequests.getBankCode(),
+        String iban = ibanGenerator.generateIban(
+                bank.getBankCode(),
                 createCivilAccountRequests.getBranchCode(),
-                createCivilAccountRequests.getAccountNumber());*/
+                createCivilAccountRequests.getAccountNumber());
         
-        //civilAccount.setAccountIBAN(iban);
+        civilAccount.setAccountIBAN(iban);
         civilAccount.setAccountToken(token);
         civilAccount.setAccountStatus("Active");
         civilAccount.setCivil(civil);
         civilAccount.setCreatedTime(LocalDateTime.now());
-        
-        List<AccountTransaction> transaction =new ArrayList<>();
-        civilAccount.setAccountTransactions(transaction);
+        civilAccount.setAccountOwnerBank(bank);
         
 		civilAccountRepository.save(civilAccount);
 		
 		AfterCreateCivilAccountResponses afterCreateCivilAccountResponses = new AfterCreateCivilAccountResponses();
 		afterCreateCivilAccountResponses.setAccountToken(token);
-		//afterCreateCivilAccountResponses.setAccountIBAN(iban);
+		afterCreateCivilAccountResponses.setAccountIBAN(iban);
+
 		
 		return afterCreateCivilAccountResponses;
 		

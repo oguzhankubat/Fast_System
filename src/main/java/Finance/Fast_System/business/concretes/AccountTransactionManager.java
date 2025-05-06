@@ -9,8 +9,8 @@ import Finance.Fast_System.Utilities.TransactionNumberGenerator;
 import Finance.Fast_System.business.abstracts.AccountTransactionService;
 import Finance.Fast_System.business.requests.AccountTransactionToFastSystemRequests;
 import Finance.Fast_System.business.responses.AfterAccountTransactionToOwnerAccountResponses;
-import Finance.Fast_System.dataRepository.AccountTransactionRepository;
-import Finance.Fast_System.entities.AccountTransaction;
+import Finance.Fast_System.dataRepository.CivilAccountTransactionRepository;
+import Finance.Fast_System.entities.CivilAccountTransaction;
 import Finance.Fast_System.entities.CivilAccount;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class AccountTransactionManager implements AccountTransactionService{
-	private final AccountTransactionRepository accountTransactionRepository;
+	private final CivilAccountTransactionRepository accountTransactionRepository;
 	private final TransactionNumberGenerator transactionNumberGenerator;
 	private final ModelMapperServices modelMapperServices;
 	private final CheckAccountTransactionBeforeProcess checkAccountTransactionBeforeProcess;
@@ -40,8 +40,8 @@ public class AccountTransactionManager implements AccountTransactionService{
 
 	    double transactionAmount = request.getTransactionAmount();	   
 	    
-	    AccountTransaction ownerTransaction=modelMapperServices.forRequest()
-	    		.map(request, AccountTransaction.class);
+	    CivilAccountTransaction ownerTransaction=modelMapperServices.forRequest()
+	    		.map(request, CivilAccountTransaction.class);
 
 
 	    AfterAccountTransactionToOwnerAccountResponses response = new AfterAccountTransactionToOwnerAccountResponses();

@@ -49,5 +49,5 @@ public class TransactionDetail {
     private String receiptBankAccountIban;
 
     @OneToMany(mappedBy = "transactionDetail")
-    private List<AccountTransaction> accountTransactions;
+    private List<CivilAccountTransaction> accountTransactions;
 }

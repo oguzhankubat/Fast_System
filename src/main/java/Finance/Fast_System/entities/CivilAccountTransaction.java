@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "account_transactions", indexes = {
 	    @Index(name = "idx_account_transaction_civil_account_id", columnList = "civil_account_id")
 	})
-public class AccountTransaction {
+public class CivilAccountTransaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

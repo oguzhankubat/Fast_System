@@ -30,7 +30,7 @@ public class CivilAccount {
     @Column(name = "id")
     private int id;
     
-    @Column(name = "account_IBAN",unique = true)
+    @Column(name = "account_IBAN",unique = true,length = 26)
     private String accountIBAN;
     
     @Column(name = "account_type", nullable = false,length = 10)
@@ -45,7 +45,7 @@ public class CivilAccount {
     @Column(name = "created_time")
     private LocalDateTime createdTime;
 
-    @Column(name = "account_status", nullable = false)
+    @Column(name = "account_status", nullable = false,length = 7)
     private String accountStatus;
     
     
@@ -60,9 +60,9 @@ public class CivilAccount {
     private Civil civil;
     
     @ManyToOne
-    @JoinColumn(name="account_owner_bank_vkn_number",referencedColumnName = "holderbank_vkn_number")
+    @JoinColumn(name="account_owner_bank_vkn_number")
     private BankOwnership accountOwnerBank;  
 
     @OneToMany(mappedBy = "civilAccount")
-    private List<AccountTransaction> accountTransactions;
+    private List<CivilAccountTransaction> accountTransactions;
 }
