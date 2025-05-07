@@ -33,7 +33,7 @@ public class CivilAccount {
     @Column(name = "account_IBAN",unique = true,length = 26)
     private String accountIBAN;
     
-    @Column(name = "account_type", nullable = false,length = 10)
+    @Column(name = "account_type", nullable = false,length = 20)
     private String accountType;
     
     @Column(name = "account_currency", nullable = false,length = 5)
@@ -60,7 +60,7 @@ public class CivilAccount {
     private Civil civil;
     
     @ManyToOne
-    @JoinColumn(name="account_owner_bank_vkn_number")
+    @JoinColumn(name="account_owner_bank")
     private BankOwnership accountOwnerBank;  
 
     @OneToMany(mappedBy = "civilAccount")

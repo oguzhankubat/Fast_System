@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Index;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -19,25 +18,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "bank_ownership", indexes = {
-        @Index(name = "idx_holderbank_vkn_number", columnList = "holderbank_vkn_number")
-})
+@Table(name = "bank_ownership")
 public class BankOwnership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "account_holder_bank", nullable = false,length = 15,unique = true)
+    @Column(name = "account_ownership_bank", nullable = false,length = 15,unique = true)
     private String accountOwnershipBank;
 
-    @Column(name = "holderbank_vkn_number", nullable = false,length = 10,unique = true)
+    @Column(name = "ownership_bank_vkn_number", nullable = false,length = 10,unique = true)
     private String ownershipbankVknNumber;
     
-    @Column(name = "bank_code",unique = true,nullable = false)
+    @Column(name = "bank_code",unique = true,nullable = false,length = 5)
     private String bankCode;
     
-    @Column(name = "bank_code_token",unique = true,nullable = false)
+    @Column(name = "bank_code_token",unique = true,nullable = false,length = 36)
     private String bankCodeToken;
     
     @Column(name = "created_time")

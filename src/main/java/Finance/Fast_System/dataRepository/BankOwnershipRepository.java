@@ -9,4 +9,6 @@ import Finance.Fast_System.entities.BankOwnership;
 public interface BankOwnershipRepository extends JpaRepository<BankOwnership, Long>{
 	
 	Optional<BankOwnership> findByBankCodeToken(String bankCodeToken);
+	
+	boolean existsByownershipbankVknNumber(String vknNumber);
 }

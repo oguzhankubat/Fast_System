@@ -1,5 +1,8 @@
 package Finance.Fast_System.business.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import Finance.Fast_System.Core.UpperCaseDeserializer;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,6 +21,7 @@ public class CreateBankOwnershipRequest {
 	
 	@NotNull
 	@NotBlank
+	@JsonDeserialize(using = UpperCaseDeserializer.class)
 	private String accountOwnershipBank;
 
 	@NotNull

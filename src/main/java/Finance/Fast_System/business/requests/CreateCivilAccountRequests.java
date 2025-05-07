@@ -1,5 +1,8 @@
 package Finance.Fast_System.business.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import Finance.Fast_System.Core.UpperCaseDeserializer;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -20,11 +23,14 @@ public class CreateCivilAccountRequests {
 	
 	@NotNull
 	@NotBlank
+	@Size(max = 20)
+	@JsonDeserialize(using = UpperCaseDeserializer.class)
 	private String accountType;
 	
 	@NotNull
 	@NotBlank
 	@Size(min=3,max = 3)
+	@JsonDeserialize(using = UpperCaseDeserializer.class)
     private String accountCurrency;
 	
 	

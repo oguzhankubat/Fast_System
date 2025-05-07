@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Index;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,9 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "transaction_details", indexes = {
-	    @Index(name = "idx_transaction_number", columnList = "transaction_number")
-	})
+@Table(name = "transaction_details")
 public class TransactionDetail {
     
     @Id
@@ -39,13 +36,13 @@ public class TransactionDetail {
     @Column(name = "transaction_amount")
     private double transactionAmount;
 
-    @Column(name = "transaction_description", length = 60)
+    @Column(name = "transaction_description",length = 150)
     private String transactionDescription;
 
-    @Column(name = "sender_bank_account_iban")
+    @Column(name = "sender_bank_account_iban",length = 26)
     private String senderBankAccountIban;
 
-    @Column(name = "receipt_bank_account_iban")
+    @Column(name = "receipt_bank_account_iban",length = 26)
     private String receiptBankAccountIban;
 
     @OneToMany(mappedBy = "transactionDetail")

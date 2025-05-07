@@ -18,8 +18,7 @@ public class CheckBankOwnership{
 	
 	BankOwnership bank = bankOwnershipRepository
 		    .findByBankCodeToken(createCivilAccountRequests.getBankOwnershipToken())
-		    .orElseThrow(() -> new RuntimeException("İşlem reddildi! Doğrulama Yapılamadı." 
-		                                             + createCivilAccountRequests.getBankOwnershipToken()));
+		    .orElseThrow(() -> new RuntimeException("İşlem reddildi! Doğrulama Yapılamadı."));
 	return bank;
 	}
 }

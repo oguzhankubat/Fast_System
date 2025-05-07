@@ -8,7 +8,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Index;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -20,9 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "account_transactions", indexes = {
-	    @Index(name = "idx_account_transaction_civil_account_id", columnList = "civil_account_id")
-	})
+@Table(name = "civil_account_transactions")
 public class CivilAccountTransaction {
 
     @Id
@@ -30,7 +27,7 @@ public class CivilAccountTransaction {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "transaction_detail_transaction_number",referencedColumnName = "transaction_number", nullable = false)
+    @JoinColumn(name = "transaction_detail_id")
     private TransactionDetail transactionDetail;
 
     @ManyToOne
@@ -38,6 +35,6 @@ public class CivilAccountTransaction {
     private CivilAccount civilAccount;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "transaction_direction", nullable = false)
+    @Column(name = "transaction_direction", nullable = false,length = 8)
     private TransactionDirection direction;
 }
