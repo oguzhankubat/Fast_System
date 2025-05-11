@@ -56,7 +56,7 @@ public class CivilAccountManager implements CivilAccountService{
         
         civilAccount.setAccountIBAN(iban);
         civilAccount.setAccountToken(token);
-        civilAccount.setAccountStatus("Active");
+        civilAccount.setAccountStatus("Pending Verification");
         civilAccount.setCivil(civil);
         civilAccount.setCreatedTime(LocalDateTime.now());
         civilAccount.setAccountOwnerBank(bank);

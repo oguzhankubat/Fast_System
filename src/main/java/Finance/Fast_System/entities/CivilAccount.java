@@ -45,7 +45,7 @@ public class CivilAccount {
     @Column(name = "created_time")
     private LocalDateTime createdTime;
 
-    @Column(name = "account_status", nullable = false,length = 7)
+    @Column(name = "account_status", nullable = false,length = 20)
     private String accountStatus;
     
     
