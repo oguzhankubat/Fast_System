@@ -37,6 +37,9 @@ public class BankOwnership {
     @Column(name = "bank_code_token",unique = true,nullable = false,length = 36)
     private String bankCodeToken;
     
+    @Column(name="callback_transaction_url")
+    private String callbackTransactionUrl;
+    
     @Column(name = "created_time")
     private LocalDateTime createdTime;
     

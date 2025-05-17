@@ -11,4 +11,6 @@ public interface BankOwnershipRepository extends JpaRepository<BankOwnership, Lo
 	Optional<BankOwnership> findByBankCodeToken(String bankCodeToken);
 	
 	boolean existsByownershipbankVknNumber(String vknNumber);
+	
+	String getBycallbackTransactionUrl(String url);
 }

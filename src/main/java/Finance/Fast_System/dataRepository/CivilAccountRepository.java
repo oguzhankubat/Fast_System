@@ -9,4 +9,6 @@ import Finance.Fast_System.entities.CivilAccount;
 public interface CivilAccountRepository extends JpaRepository<CivilAccount, Long>{
 	
 	Optional<CivilAccount> findByAccountIBAN(String accountIBAN);
+	
+	CivilAccount getByAccountIBAN(String accountIban);
 }

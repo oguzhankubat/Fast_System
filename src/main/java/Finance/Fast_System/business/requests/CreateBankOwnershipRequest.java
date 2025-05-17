@@ -1,5 +1,7 @@
 package Finance.Fast_System.business.requests;
 
+import org.hibernate.validator.constraints.URL;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import Finance.Fast_System.Core.UpperCaseDeserializer;
@@ -28,6 +30,11 @@ public class CreateBankOwnershipRequest {
 	@NotBlank
 	@Size(min=5,max = 5)
 	private String bankCode;
+	
+	@NotNull
+	@NotBlank
+	@URL
+	private String callbackTransactionUrl;
 	
 	
 	

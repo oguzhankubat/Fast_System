@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
+import Finance.Fast_System.BackgroundProcesses.BackgroundRedirectAccountTransactionProcess;
 import Finance.Fast_System.Core.ModelMapperServices;
 import Finance.Fast_System.DTO_pojo.ValidatedAccounts;
 import Finance.Fast_System.Enums.TransactionDirection;
@@ -29,6 +30,7 @@ public class AccountTransactionManager implements AccountTransactionService{
 	private final ModelMapperServices modelMapperServices;
 	private final CheckAccountTransactionBeforeProcess checkAccountTransactionBeforeProcess;
 	private final TransactionDetailRepository transactionDetailRepository;
+	private final BackgroundRedirectAccountTransactionProcess backgroundRedirectAccountTransactionProcess;
 	
 	@Override
 	@Transactional
@@ -60,7 +62,8 @@ public class AccountTransactionManager implements AccountTransactionService{
 	    receiptTransaction.setDirection(TransactionDirection.INCOMING);
 	    receiptTransaction.setTransactionDetail(transactionDetail);
 	    
-	    //bu araya bankaya post eklenecek.
+	    backgroundRedirectAccountTransactionProcess.redirectTransaction(request, transactionNumber);
+	    
 	    transactionDetailRepository.save(transactionDetail);
 	    civilAccountTransactionRepository.save(ownerTransaction);
 	    civilAccountTransactionRepository.save(receiptTransaction);
