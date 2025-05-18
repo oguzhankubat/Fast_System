@@ -73,7 +73,7 @@ public class BackgroundRedirectAccountTransactionProcess {
 
 
         } catch (IOException | InterruptedException e) {
-            throw new RuntimeException("Backgorund Redirect Account Transaction İstek gönderilemedi!", e);
+            throw new RuntimeException("Fast System Backgorund Redirect Account Transaction İstek gönderilemedi!", e);
         }
     }
 }

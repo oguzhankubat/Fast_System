@@ -37,6 +37,10 @@ public class CheckAccountTransactionBeforeProcess {
         if (!sourceAccount.getAccountCurrency().equals(receiptAccount.getAccountCurrency())) {
             throw new RuntimeException("Hesap türleri eşleşmiyor. Aktarım yapılamaz!");
         }
+        
+        if (sourceAccount.getAccountIBAN().equals(receiptAccount.getAccountIBAN())) {
+            throw new RuntimeException("Gönderici ve alıcı hesaplar aynı olamaz. İşlem reddedildi!");
+        }
 
         return new ValidatedAccounts(sourceAccount, receiptAccount);
     }
