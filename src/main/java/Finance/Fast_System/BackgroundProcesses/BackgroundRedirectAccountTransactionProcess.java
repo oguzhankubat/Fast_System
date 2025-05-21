@@ -39,7 +39,8 @@ public class BackgroundRedirectAccountTransactionProcess {
             	    + "\"senderPersonLastName\":\"%s\","
             	    + "\"transactionNumber\":\"%s\","
             	    + "\"senderAccountIBAN\":\"%s\","
-            	    + "\"receiptBankAccountToken\":\"%s\"}",
+            	    + "\"receiptBankAccountToken\":\"%s\","
+            	    + "\"transactionType\":\"%s\"}",
             	    request.getReceiptBankAccountIBAN(),
             	    request.getTransactionAmount(),
             	    request.getTransactionDescription(),
@@ -47,7 +48,8 @@ public class BackgroundRedirectAccountTransactionProcess {
             	    account.getCivil().getPersonLastName(),
             	    transactionNumber,
             	    account.getAccountIBAN(),
-            	    receiverAccount.getAccountToken()
+            	    receiverAccount.getAccountToken(),
+            	    request.getTransactionType()
             	);
 
             

@@ -50,8 +50,7 @@ public class AccountTransactionManager implements AccountTransactionService{
 	    transactionDetail.setTransactionNumber(transactionNumber);
 	    transactionDetail.setSenderBankAccountIban(request.getAccountIBAN());
 	    transactionDetail.setTransactionTime(LocalDateTime.now());
-	
-	    
+
 	    CivilAccountTransaction ownerTransaction= new CivilAccountTransaction();
 	    ownerTransaction.setCivilAccount(ownerAccount);
 	    ownerTransaction.setTransactionDetail(transactionDetail);

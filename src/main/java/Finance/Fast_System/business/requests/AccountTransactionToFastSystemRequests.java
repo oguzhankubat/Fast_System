@@ -1,5 +1,7 @@
 package Finance.Fast_System.business.requests;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import Finance.Fast_System.Core.UpperCaseDeserializer;
@@ -29,7 +31,11 @@ public class AccountTransactionToFastSystemRequests {
 	
 	@NotNull
 	@Positive(message = "Sadece pozitif sayı girilebilir!")
-	private Double transactionAmount;
+	private BigDecimal transactionAmount;
+	
+	@NotNull
+	@NotBlank
+	private String transactionType;
 	
 	@NotNull
 	@NotBlank
