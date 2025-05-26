@@ -1,5 +1,6 @@
 package Finance.Fast_System.entities;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,15 +34,18 @@ public class TransactionDetail {
     @Column(name = "transaction_time")
     private LocalDateTime transactionTime;
 
-    @Column(name = "transaction_amount")
-    private double transactionAmount;
+    @Column(name = "transaction_amount",precision = 18,scale = 2)
+    private BigDecimal transactionAmount;
 
     @Column(name = "transaction_description",length = 150)
     private String transactionDescription;
 
     @Column(name = "sender_bank_account_iban",length = 26)
     private String senderBankAccountIban;
-
+    
+    @Column(name = "transaction_type",length = 20)
+    private String transactionType;
+    
     @Column(name = "receipt_bank_account_iban",length = 26)
     private String receiptBankAccountIban;
 
