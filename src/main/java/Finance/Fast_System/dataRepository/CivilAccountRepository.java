@@ -11,4 +11,5 @@ public interface CivilAccountRepository extends JpaRepository<CivilAccount, Long
 	Optional<CivilAccount> findByAccountIBAN(String accountIBAN);
 	
 	CivilAccount getByAccountIBAN(String accountIban);
+	boolean existsByAccountIBAN(String iban);
 }
